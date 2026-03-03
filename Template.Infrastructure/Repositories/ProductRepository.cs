@@ -15,9 +15,15 @@ public class ProductRepository : IProductRepository
         _context = context;
     }
 
-    public async Task<List<Product>> GetAllProducts()
+    public async Task<(List<Product> Products, int TotalCount)> GetAllProducts(int pageNumber, int pageSize)
     {
-       return await _context.Products.ToListAsync();
+        var totalCount = await _context.Products.CountAsync();
+
+        var skipAmount = (pageNumber - 1) * pageSize;
+
+        var products = await _context.Products.Skip(skipAmount).Take(pageSize).ToListAsync();
+
+        return (products, totalCount);
     }
 
     public async Task<Product> GetById(int id)

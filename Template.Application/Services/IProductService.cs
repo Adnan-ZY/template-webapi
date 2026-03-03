@@ -1,13 +1,16 @@
-using Template.Core.Entities;
+using Template.Application.Models;
+using System.Threading.Tasks;
 
 namespace Template.Application.Services
 {
     public interface IProductService
     {
-        Task<List<Product>> GetAllProducts();
-        Task<Product> GetProductById(int id);
-        Task AddProduct(Product product);
-        Task UpdateProduct(Product product);
+        // Notice how this line now perfectly matches your ProductService class!
+        Task<PagedResult<ProductDto>> GetAllProducts(PaginationFilter filter);
+
+        Task<ProductDto> GetProductById(int id);
+        Task<ProductDto> AddProduct(CreateProductRequest request);
+        Task UpdateProduct(int id, UpdateProductRequest request);
         Task DeleteProduct(int id);
     }
 }

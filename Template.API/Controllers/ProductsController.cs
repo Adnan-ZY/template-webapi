@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Template.Application.Services;
-using Template.Core.Entities;
+using Template.Application.Models;
 
 namespace Template.Api.Controllers
 {
@@ -16,64 +16,41 @@ namespace Template.Api.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAllProducts()
+        public async Task<IActionResult> GetAllProducts([FromQuery] PaginationFilter filter)
         {
-            var products = await _productService.GetAllProducts();
-            return Ok(products);
+            var pagedResult = await _productService.GetAllProducts(filter);
+            return Ok(pagedResult);
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetProductById(int id)
         {
-            try
-            {
                 var product = await _productService.GetProductById(id);
-
                 return Ok(product);
-            }
-            catch (KeyNotFoundException ex)
-            {
-
-                return NotFound(ex.Message);
-            }
         }
+
         [HttpPost]
-        public async Task<IActionResult> AddProduct([FromBody] Product product)
+        public async Task<IActionResult> AddProduct([FromBody] CreateProductRequest request)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
-            await _productService.AddProduct(product);
-            return CreatedAtAction(nameof(GetProductById), new { id = product.Id }, product);
+            var createdProduct = await _productService.AddProduct(request);
+            return CreatedAtAction(nameof(GetProductById), new { id = createdProduct.Id }, createdProduct);
         }
 
         [HttpPut("{id}")] // HTTP PUT
-        public async Task<IActionResult> UpdateProduct(int id, [FromBody] Product product)
+        public async Task<IActionResult> UpdateProduct(int id, [FromBody] UpdateProductRequest request)
         {
-            if (id != product.Id)
-                return BadRequest("ID mismatch");
-
-            try
-            {
-                await _productService.UpdateProduct(product);
-                return NoContent(); // 204 No Content
-            }
-            catch (KeyNotFoundException ex)
-            {
-                return NotFound(ex.Message); // 404 if product not found
-            }
+                await _productService.UpdateProduct(id, request);
+                return Ok("Updated Success");// 204 No Content
+                
         }
         [HttpDelete("{id}")] // HTTP DELETE
         public async Task<IActionResult> DeleteProduct(int id)
         {
-            try
-            {
                 await _productService.DeleteProduct(id);
-                return NoContent(); // 204 after successful deletion
-            }
-            catch (KeyNotFoundException ex)
-            {
-                return NotFound(ex.Message); // 404 if not found
-            }
+                return Ok("Deleted Successfully");
+
         }
     }
 }

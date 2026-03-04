@@ -5,7 +5,6 @@ namespace Template.Application.Services
 {
     public interface IProductService
     {
-        // Notice how this line now perfectly matches your ProductService class!
         Task<PagedResult<ProductDto>> GetAllProducts(PaginationFilter filter);
 
         Task<ProductDto> GetProductById(int id);

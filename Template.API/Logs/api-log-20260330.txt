@@ -1,0 +1,72 @@
+2026-03-30 11:51:52.971 +05:00 [INF] [ReqId: ] Now listening on: http://localhost:5217
+
+2026-03-30 11:51:53.013 +05:00 [INF] [ReqId: ] Application started. Press Ctrl+C to shut down.
+
+2026-03-30 11:51:53.017 +05:00 [INF] [ReqId: ] Hosting environment: Development
+
+2026-03-30 11:51:53.021 +05:00 [INF] [ReqId: ] Content root path: C:\Users\MAdnan\Desktop\TEMP\template-webapi\Template.API
+
+2026-03-30 11:52:06.711 +05:00 [WRN] [ReqId: 0HNKE53DJRANI:00000001] No store type was specified for the decimal property 'Price' on entity type 'Product'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+
+2026-03-30 11:52:07.351 +05:00 [WRN] [ReqId: 0HNKE53DJRANI:00000001] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+
+2026-03-30 11:52:07.355 +05:00 [WRN] [ReqId: 0HNKE53DJRANI:00000001] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+
+2026-03-30 11:52:07.517 +05:00 [INF] [ReqId: 0HNKE53DJRANI:00000001] HTTP GET /api/Products responded 200 in 1340.2882 ms
+
+2026-03-30 11:53:15.386 +05:00 [INF] [ReqId: 0HNKE53DJRANK:00000001] HTTP GET /api/Products responded 200 in 60.3222 ms
+
+2026-03-30 11:53:59.545 +05:00 [INF] [ReqId: 0HNKE53DJRANK:00000002] Fetched from DB
+
+2026-03-30 11:53:59.678 +05:00 [INF] [ReqId: 0HNKE53DJRANK:00000002] HTTP GET /api/Products/1 responded 200 in 146.4415 ms
+
+2026-03-30 11:54:04.682 +05:00 [INF] [ReqId: 0HNKE53DJRANK:00000003] Fetched From Cache
+
+2026-03-30 11:54:04.684 +05:00 [INF] [ReqId: 0HNKE53DJRANK:00000003] HTTP GET /api/Products/1 responded 200 in 3.0144 ms
+
+2026-03-30 11:54:35.425 +05:00 [INF] [ReqId: 0HNKE53DJRANK:00000004] Fetched From Cache
+
+2026-03-30 11:54:35.428 +05:00 [INF] [ReqId: 0HNKE53DJRANK:00000004] HTTP GET /api/Products/1 responded 200 in 3.4675 ms
+
+2026-03-30 11:54:42.146 +05:00 [INF] [ReqId: 0HNKE53DJRANK:00000005] Fetched from DB
+
+2026-03-30 11:54:42.158 +05:00 [INF] [ReqId: 0HNKE53DJRANK:00000005] HTTP GET /api/Products/2 responded 200 in 12.6032 ms
+
+2026-03-30 11:54:47.329 +05:00 [INF] [ReqId: 0HNKE53DJRANK:00000006] Fetched From Cache
+
+2026-03-30 11:54:47.333 +05:00 [INF] [ReqId: 0HNKE53DJRANK:00000006] HTTP GET /api/Products/2 responded 200 in 4.4786 ms
+
+2026-03-30 11:54:49.542 +05:00 [INF] [ReqId: 0HNKE53DJRANK:00000007] Fetched From Cache
+
+2026-03-30 11:54:49.544 +05:00 [INF] [ReqId: 0HNKE53DJRANK:00000007] HTTP GET /api/Products/2 responded 200 in 2.7460 ms
+
+2026-03-30 11:54:52.006 +05:00 [INF] [ReqId: 0HNKE53DJRANK:00000008] Fetched From Cache
+
+2026-03-30 11:54:52.009 +05:00 [INF] [ReqId: 0HNKE53DJRANK:00000008] HTTP GET /api/Products/2 responded 200 in 2.9585 ms
+
+2026-03-30 11:54:52.840 +05:00 [INF] [ReqId: 0HNKE53DJRANK:00000009] Fetched From Cache
+
+2026-03-30 11:54:52.842 +05:00 [INF] [ReqId: 0HNKE53DJRANK:00000009] HTTP GET /api/Products/2 responded 200 in 2.6092 ms
+
+2026-03-30 11:54:53.947 +05:00 [INF] [ReqId: 0HNKE53DJRANK:0000000A] Fetched From Cache
+
+2026-03-30 11:54:53.950 +05:00 [INF] [ReqId: 0HNKE53DJRANK:0000000A] HTTP GET /api/Products/2 responded 200 in 3.1937 ms
+
+2026-03-30 11:54:54.751 +05:00 [INF] [ReqId: 0HNKE53DJRANK:0000000B] Fetched From Cache
+
+2026-03-30 11:54:54.753 +05:00 [INF] [ReqId: 0HNKE53DJRANK:0000000B] HTTP GET /api/Products/2 responded 200 in 2.5067 ms
+
+2026-03-30 11:54:55.863 +05:00 [INF] [ReqId: 0HNKE53DJRANK:0000000C] Fetched From Cache
+
+2026-03-30 11:54:55.865 +05:00 [INF] [ReqId: 0HNKE53DJRANK:0000000C] HTTP GET /api/Products/2 responded 200 in 3.1339 ms
+
+2026-03-30 11:54:57.256 +05:00 [INF] [ReqId: 0HNKE53DJRANK:0000000D] Fetched From Cache
+
+2026-03-30 11:54:57.259 +05:00 [INF] [ReqId: 0HNKE53DJRANK:0000000D] HTTP GET /api/Products/2 responded 200 in 2.6940 ms
+
+2026-03-30 12:02:20.159 +05:00 [INF] [ReqId: 0HNKE53DJRANM:00000001] HTTP GET /api/Products responded 200 in 15.3282 ms
+
+2026-03-30 12:03:35.954 +05:00 [INF] [ReqId: 0HNKE53DJRANO:00000001] HTTP GET /api/Products responded 200 in 8.7332 ms
+
+2026-03-30 12:15:23.449 +05:00 [INF] [ReqId: ] Application is shutting down...
+

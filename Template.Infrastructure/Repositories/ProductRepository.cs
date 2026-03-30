@@ -21,7 +21,7 @@ public class ProductRepository : IProductRepository
 
         var skipAmount = (pageNumber - 1) * pageSize;
 
-        var products = await _context.Products.Skip(skipAmount).Take(pageSize).ToListAsync();
+        var products = await _context.Products.OrderBy(p => p.Id).Skip(skipAmount).Take(pageSize).ToListAsync();
 
         return (products, totalCount);
     }

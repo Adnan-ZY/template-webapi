@@ -1,15 +1,21 @@
 using Template.Application.Models;
 using Template.Core.Entities;
 using Template.Core.Interfaces;
+using Microsoft.Extensions.Caching.Memory;
+using Microsoft.Extensions.Logging;
 namespace Template.Application.Services
 {
     public class ProductService : IProductService
     {
         private readonly IProductRepository _productRepository;
+        private readonly IMemoryCache _cache;
+        private readonly ILogger<ProductService> _logger;
 
-        public ProductService(IProductRepository productRepository)
+        public ProductService(IProductRepository productRepository, IMemoryCache cache, ILogger<ProductService> logger)
         {
             _productRepository = productRepository;
+            _cache = cache;
+            _logger = logger;
         }
         
         public async Task<PagedResult<ProductDto>> GetAllProducts(PaginationFilter filter)
@@ -26,7 +32,27 @@ namespace Template.Application.Services
         }
         public async Task<ProductDto> GetProductById(int id)
         {
+            //caching
+            string cacheKey = $"Product_{id}";
+
+            if (_cache.TryGetValue(cacheKey,out ProductDto cachedProduct))
+            {
+                _logger.LogInformation("Fetched From Cache", id);
+                return cachedProduct;
+            }
+
+            //if not available get it from the db 
+            _logger.LogInformation("Fetched from DB", id);
             var product = await _productRepository.GetById(id);
+            if (product == null)
+            {
+                throw new KeyNotFoundException($"Prodcut with id {id} not found.");
+            }
+            //saving it for next time in cache
+            var productDto = MapToDto(product);
+            var cacheOptions = new MemoryCacheEntryOptions().SetAbsoluteExpiration(TimeSpan.FromMinutes(1));
+            _cache.Set(cacheKey, productDto, cacheOptions);
+
             return MapToDto(product);
         }
         public async Task<ProductDto> AddProduct(CreateProductRequest request)
